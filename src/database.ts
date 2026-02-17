@@ -1,6 +1,6 @@
-import 'dotenv/config'
 import type { Knex } from 'knex'
 import knexModule from 'knex'
+import { env } from './env/index.js'
 const { knex: setupKnex } = knexModule
 
 if (!process.env.DATABASE_URL) {
@@ -10,7 +10,7 @@ if (!process.env.DATABASE_URL) {
 export const config: Knex.Config = {
   client: 'sqlite',
   connection: {
-    filename: process.env.DATABASE_URL,
+    filename: env.DATABASE_URL,
   },
   useNullAsDefault: true,
   migrations: {
